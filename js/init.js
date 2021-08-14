@@ -47,5 +47,3 @@ document.addEventListener("DOMContentLoaded", function(e){
   var user = JSON.parse(sessionStorage.getItem('usuario'))
   document.getElementById('welcome').innerHTML += user.nombre;
 });
-
-export {PRODUCTS_URL, getJSONData};
