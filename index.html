@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
-
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="116138794112-2sfkruti4bj886ql6fgln270qlmghf2a.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <!-- Bootstrap core CSS -->
@@ -44,6 +46,7 @@
       <h2>Login</h2>
       <label class="p-4">Usuario <input type="text" id="username" class="form-control" placeholder="Nombre de usuario" autofocus></label><br>
       <label>Contraseña <input type="password" id="password" class="form-control" placeholder="Contraseña" required></label><br>
+      <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div><br>
       <input type="submit" class="btn btn-success m-4" value="Ingresar" id="ingresar">
     </div>
   </div>
