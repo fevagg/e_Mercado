@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>eMercado - Todo lo que busques está aquí</title>
-
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="396076528800-9ir8sec0enshl66i0e0e41oq8r5q77fm.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <!-- Bootstrap core CSS -->
@@ -14,6 +16,7 @@
     <link href="css/styles.css" rel="stylesheet">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="./js/OAuth.js"></script>
     <script type="module" src="js/init.js"></script>
   </head>
   <body>
@@ -24,7 +27,7 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block" href="" id="user"></a>
+        <a class="py-2 d-none d-md-inline-block" href="" id="user">Desconectar</a>
       </div>
     </nav>
     <main role="main">
