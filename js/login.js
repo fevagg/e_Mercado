@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 user.nombre = userLogin.value;
                 user.contraseña = userPass.value;
                 user.estado = "conectado";
-                sessionStorage.setItem('usuario', JSON.stringify(user));
+                localStorage.setItem('usuario', JSON.stringify(user));
             }
         });
     }
