@@ -27,5 +27,5 @@ document.addEventListener("DOMContentLoaded", function(e){
         });
     }
     if(localStorage.getItem('usuario') != undefined || sessionStorage.getItem('usuario') != undefined) location.href = 'principal.html';
-    else login();
+    else login(); 
 });
