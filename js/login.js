@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         var loginBtn = document.getElementById('ingresar');
         var userLogin = document.getElementById('username');
         var userPass = document.getElementById('password');
+        var checkbox = document.getElementsByClassName('form-check-input');
         loginBtn.addEventListener('click', ()=>{
             if(userLogin.value.trim() === ''){
                 alert('Necesita un nombre');
@@ -17,7 +18,11 @@ document.addEventListener("DOMContentLoaded", function(e){
                 user.nombre = userLogin.value;
                 user.contraseña = userPass.value;
                 user.estado = "conectado";
-                localStorage.setItem('usuario', JSON.stringify(user));
+                if(checkbox[0].checked){
+                    localStorage.setItem('usuario', JSON.stringify(user));
+                }else{
+                    sessionStorage.setItem('usuario', JSON.stringify(user));
+                }
             }
         });
     }
