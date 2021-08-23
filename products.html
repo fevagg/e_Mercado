@@ -27,7 +27,16 @@
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
       </div>
     </nav>
-    <div class="container p-5" id="product-list"></div>
+    <div class="container py-5">
+      <div class="container">
+        <button class="btn btn-white btn-sm" onclick="orderProductByLowestPrice()"><i class="fas fa-sort-amount-down-alt"></i>USD</button>
+        <button class="btn btn-white btn-sm" onclick="orderProductByHighestPrice()"><i class="fas fa-sort-amount-up-alt"></i>USD</button>
+        <button class="btn btn-white btn-sm" onclick="orderProductByRelevance()"><i class="fas fa-sort-amount-down"></i></button>
+        <label for="search" class="float-right d-flex px-3"><input type="search" placeholder="Buscá tu producto" name="search" class="form-control form-control-sm"></label>
+        <label for="search" class="float-right d-flex flex-row"><span class="py-1 px-2">Precio:</span><span class="py-1 px-2">Min.</span><input type="number" id="min" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 70px;"><span class="py-1 px-2">Max.</span><input type="number" id="max" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 70px;"><span class="px-3"><button class="btn btn-primary btn-sm" onclick="filteredByPrice()">Filtrar</button></span></label>
+        <div id="product-list" class="py-2"></div>
+      </div>
+    </div>
     <footer class="text-muted bg-light">
       <div class="container">
         <p class="float-right">

@@ -23,15 +23,42 @@ let showProducts = (array)=>{
 </div>
 </div>`
     }
-    document.getElementById('product-list').innerHTML += productList;
+    document.getElementById('product-list').innerHTML = productList;
+}
+
+function orderProductByRelevance(){
+    products.sort((a,b)=>{
+        return b.soldCount - a.soldCount;
+    });
+    showProducts(products);
+}
+
+function orderProductByHighestPrice(){
+    products.sort((a,b)=>{
+        return b.cost - a.cost;
+    });
+    showProducts(products);
+}
+
+function orderProductByLowestPrice(){
+    products.sort((a,b)=>{
+        return a.cost - b.cost;
+    });
+    showProducts(products);
+}
+
+function filteredByPrice(){
+    let min = document.getElementById('min');
+    let max = document.getElementById('max');
+    const productsFiltered = products.filter(product => product.cost > min.value && product.cost < max.value);
+    showProducts(productsFiltered);
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(response=>{
         if(response.status === 'ok'){
           products = response.data;
-          console.log(products)
           showProducts(products);
         }
-      })
+      });
 });
