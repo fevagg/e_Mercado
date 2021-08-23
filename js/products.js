@@ -55,10 +55,14 @@ function filteredByPrice(){
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCTS_URL).then(response=>{
-        if(response.status === 'ok'){
-          products = response.data;
-          showProducts(products);
-        }
-      });
+    function reset(){
+        getJSONData(PRODUCTS_URL).then(response=>{
+            if(response.status === 'ok'){
+              products = response.data;
+              showProducts(products);
+            }
+        });
+    }
+    reset();
+    document.getElementById('reset').addEventListener('click', () => reset());
 });
