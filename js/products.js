@@ -54,6 +54,18 @@ function filteredByPrice(){
     showProducts(productsFiltered);
 }
 
+function search(){
+    let search = document.getElementById('search');
+    let productSearched = products.filter(product =>{
+        if(product.name.toLowerCase().includes(search.value)){
+            return product;
+        }
+    });
+    showProducts(productSearched);
+}
+
+    
+
 document.addEventListener("DOMContentLoaded", function (e) {
     function reset(){
         getJSONData(PRODUCTS_URL).then(response=>{

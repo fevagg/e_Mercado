@@ -33,7 +33,7 @@
         <button class="btn btn-white btn-sm" onclick="orderProductByHighestPrice()"><i class="fas fa-sort-amount-up-alt"></i>USD</button>
         <button class="btn btn-white btn-sm" onclick="orderProductByRelevance()"><i class="fas fa-sort-amount-down"></i></button>
         <button class="btn btn-white btn-sm" id="reset"><i class="fas fa-redo"></i></button>
-        <label for="search" class="float-right d-flex px-3"><input type="search" placeholder="Buscá tu producto" name="search" class="form-control form-control-sm"></label>
+        <label for="search" class="float-right d-flex px-3"><input type="search" onkeyup="search()" id="search" placeholder="Buscá tu producto" name="search" class="form-control form-control-sm"></label>
         <label for="search" class="float-right d-flex flex-row"><span class="py-1 px-2">Precio:</span><span class="py-1 px-2">Min.</span><input type="number" id="min" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 70px;"><span class="py-1 px-2">Max.</span><input type="number" id="max" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 70px;"><span class="px-3"><button class="btn btn-primary btn-sm" onclick="filteredByPrice()">Filtrar</button></span></label>
         <div id="product-list" class="py-2"></div>
       </div>
