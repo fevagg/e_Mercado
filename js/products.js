@@ -50,14 +50,14 @@ function orderProductByLowestPrice(){
 function filteredByPrice(){
     let min = document.getElementById('min');
     let max = document.getElementById('max');
-    const productsFiltered = products.filter(product => product.cost > min.value && product.cost < max.value);
+    const productsFiltered = products.filter(product => product.cost > min.value || product.cost < max.value);
     showProducts(productsFiltered);
 }
 
 function search(){
     let search = document.getElementById('search');
     let productSearched = products.filter(product =>{
-        if(product.name.toLowerCase().includes(search.value)){
+        if(product.name.toLowerCase().includes(search.value.toLowerCase())){
             return product;
         }
     });
