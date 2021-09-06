@@ -50,31 +50,23 @@ function orderProductByLowestPrice(){
 function filteredByPrice(){
     let min = document.getElementById('min');
     let max = document.getElementById('max');
-    const productsFiltered = products.filter(product => product.cost > min.value || product.cost < max.value);
-    showProducts(productsFiltered);
+    const productsFiltered = products.filter(product => product.cost >= min.value && product.cost <= max.value);
+    if(min.value !== '' && max.value !== '') showProducts(productsFiltered); else showProducts(products);
 }
 
 function search(){
     let search = document.getElementById('search');
-    let productSearched = products.filter(product =>{
-        if(product.name.toLowerCase().includes(search.value.toLowerCase())){
-            return product;
-        }
-    });
+    let productSearched = products.filter(product => product.name.toLowerCase().includes(search.value.toLowerCase()));
     showProducts(productSearched);
 }
 
     
 
 document.addEventListener("DOMContentLoaded", function (e) {
-    function reset(){
         getJSONData(PRODUCTS_URL).then(response=>{
             if(response.status === 'ok'){
               products = response.data;
               showProducts(products);
             }
         });
-    }
-    reset();
-    document.getElementById('reset').addEventListener('click', () => reset());
 });
