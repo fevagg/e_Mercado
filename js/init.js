@@ -46,13 +46,13 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
   if(localStorage.getItem('usuario') != undefined){
     var user = JSON.parse(localStorage.getItem('usuario'))
-    const nav = `<a class="py-2 d-none d-md-inline-block" href="my-profile.html">${user.nombre}</a>`
+    const nav = `<a class="py-2 d-none d-md-inline-block" id="username" href="my-profile.html">${user.nombre}</a>`
     document.getElementsByTagName('nav')[0].firstElementChild.innerHTML += nav;
     document.getElementById('welcome').innerHTML += user.nombre;
 
   }else{
     var user = JSON.parse(sessionStorage.getItem('usuario'))
-    const nav = `<a class="py-2 d-none d-md-inline-block" href="my-profile.html">${user.nombre}</a>`
+    const nav = `<a class="py-2 d-none d-md-inline-block" id="username" href="my-profile.html">${user.nombre}</a>`
     document.getElementsByTagName('nav')[0].firstElementChild.innerHTML += nav;
     document.getElementById('welcome').innerHTML += user.nombre;
   }

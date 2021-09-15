@@ -139,3 +139,21 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.rate label{
+  cursor: pointer;
+}
+.rate input {
+position: absolute;
+top: -100px;
+}
+.rate label {
+float: right;
+color: #c1b8b8;
+font-size: 30px; 
+}
+.rate label:hover,
+.rate label:hover ~ label,
+.rate input:checked ~ label {
+color:orange;
+}

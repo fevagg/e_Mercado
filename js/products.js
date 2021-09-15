@@ -7,7 +7,8 @@ let products = [];
 let showProducts = (array)=>{
     let productList = "";
     for(let product of array){
-        productList += `<div class="list-group-item">
+        productList += `<a href="product-info.HTML" style="text-decoration:none; color:black;">
+        <div class="list-group-item">
         <div class="row">
             <div class="col-sm-4">
         <img src="${product.imgSrc}" alt="${product.description}" class="img-thumbnail">
@@ -21,7 +22,8 @@ let showProducts = (array)=>{
         <span>${product.currency} ${product.cost}</span>
     </div>
 </div>
-</div>`
+</div>
+</a>`
     }
     document.getElementById('product-list').innerHTML = productList;
 }
@@ -60,7 +62,7 @@ function search(){
     showProducts(productSearched);
 }
 
-    
+
 
 document.addEventListener("DOMContentLoaded", function (e) {
         getJSONData(PRODUCTS_URL).then(response=>{
