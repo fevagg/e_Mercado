@@ -46,14 +46,34 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
   if(localStorage.getItem('usuario') != undefined){
     var user = JSON.parse(localStorage.getItem('usuario'))
-    const nav = `<a class="py-2 d-none d-md-inline-block" id="username" href="my-profile.html">${user.nombre}</a>`
-    document.getElementsByTagName('nav')[0].firstElementChild.innerHTML += nav;
+    const navDrop = `<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${user.nombre}</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+      <a class="dropdown-item" href="./cart.html">Mi carrito</a>
+      <a class="dropdown-item" href="./my-profile.html">Mi perfil</a>
+      <a class="dropdown-item" id="disconnect" href="">Desconectar</a>
+    </div>
+    </div>`
+    document.getElementsByTagName('nav')[0].firstElementChild.innerHTML += navDrop;
     document.getElementById('welcome').innerHTML += user.nombre;
+    document.getElementById('disconnect').addEventListener('click', ()=>{
+      signOut();
+    })
 
   }else{
     var user = JSON.parse(sessionStorage.getItem('usuario'))
-    const nav = `<a class="py-2 d-none d-md-inline-block" id="username" href="my-profile.html">${user.nombre}</a>`
-    document.getElementsByTagName('nav')[0].firstElementChild.innerHTML += nav;
+    const navDrop = `<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${user.nombre}</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+      <a class="dropdown-item" href="./cart.html">Mi carrito</a>
+      <a class="dropdown-item" href="./my-profile.html">Mi perfil</a>
+      <a class="dropdown-item" id="disconnect" href="./index.html">Desconectar</a>
+    </div>
+    </div>`
+    document.getElementsByTagName('nav')[0].firstElementChild.innerHTML += navDrop;
     document.getElementById('welcome').innerHTML += user.nombre;
+    document.getElementById('disconnect').addEventListener('click', ()=>{
+      signOut();
+    })
   }
 });

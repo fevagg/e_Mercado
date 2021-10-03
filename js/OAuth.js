@@ -18,10 +18,10 @@ function onLoad() {
 }
 function signOut(){
     var auth2 = gapi.auth2.getAuthInstance();
+    location.href = 'index.html';
     auth2.signOut().then(function () {
-      localStorage.clear();
-      sessionStorage.clear();
-      console.log('done');
-      location.href = 'index.html';
+        localStorage.clear();
+        sessionStorage.clear();
+        console.log('done');
     });
 }
