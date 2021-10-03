@@ -7,7 +7,7 @@ let products = [];
 let showProducts = (array)=>{
     let productList = "";
     for(let product of array){
-        productList += `<a href="product-info.HTML" style="text-decoration:none; color:black;">
+        productList += `<a href="product-info.html" style="text-decoration:none; color:black;">
         <div class="list-group-item">
         <div class="row">
             <div class="col-sm-4">
