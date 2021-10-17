@@ -26,16 +26,16 @@
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       </div>
     </nav>
-    <div class="container py-5">
-      <div class="container">
-        <button class="btn btn-white btn-sm" onclick="orderProductByLowestPrice()"><i class="fas fa-sort-amount-down-alt"></i>USD</button>
-        <button class="btn btn-white btn-sm" onclick="orderProductByHighestPrice()"><i class="fas fa-sort-amount-up-alt"></i>USD</button>
-        <button class="btn btn-white btn-sm" onclick="orderProductByRelevance()"><i class="fas fa-sort-amount-down"></i></button>
-        <label for="search" class="float-right d-flex px-3"><input type="search" onkeyup="search()" id="search" placeholder="Buscá tu producto" name="search" class="form-control form-control-sm"></label>
-        <label for="search" class="float-right d-flex flex-row"><span class="py-1 px-2">Precio:</span><span class="py-1 px-2">Min.</span><input type="number" onkeyup="filteredByPrice()" id="min" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 70px;"><span class="py-1 px-2">Max.</span><input type="number" onkeyup="filteredByPrice()" id="max" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 70px;"></label>
+      <div class="container d-flex flex-column py-4">
+        <div class="row justify-content-around align-self-center w-75">
+        <div>
+            <button class="btn btn-white btn-sm" onclick="orderProductByLowestPrice()"><i class="fas fa-sort-amount-down-alt"></i>USD</button>
+            <button class="btn btn-white btn-sm" onclick="orderProductByHighestPrice()"><i class="fas fa-sort-amount-up-alt"></i>USD</button><button class="btn btn-white btn-sm" onclick="orderProductByRelevance()"><i class="fas fa-sort-amount-down"></i></button>
+        </div>
+         <label for="search" class="px-3"><input type="search" onkeyup="search()" id="search" placeholder="Buscá tu producto" name="search" class="form-control form-control-sm"></label>
+         <label for="search" class="d-inline-flex w-25 justify-content-between"><input type="number" onkeyup="filteredByPrice()" id="min" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 70px;"><input type="number" onkeyup="filteredByPrice()" id="max" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 70px;"></label></div>
         <div id="product-list" class="py-2"></div>
       </div>
-    </div>
     <footer class="text-muted bg-light">
       <div class="container">
         <p class="float-right">
