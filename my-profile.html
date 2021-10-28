@@ -27,6 +27,12 @@
         font-size: 3.5rem;
       }
     }
+    .form-group input{
+      width: 200px;
+    }
+    .row:nth-child(2){
+      height: 95vh;
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -42,12 +48,27 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container">
+    <div class="row m-4">
+      <div class="col">
+        <h2 class="text-center">Mi perfil</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex flex-column justify-content-center align-items-center" id="profile">
+      </div>
+      <div class="col d-flex justify-content-center align-items-center">
+        <div class="form-group d-flex flex-column text-center" id="form-group">
+          <label for="nombre">Nombre <input type="text" name="nombre" id="nombre" class="form-control" placeholder=""></label>
+          <label for="apellido">Apellido <input type="text" name="apellido" id="apellido" class="form-control" placeholder=""></label>
+          <label for="edad">Edad <input type="number" name="edad" id="edad" class="form-control" placeholder=""></label>
+          <label for="email">Email <input type="email" name="email" id="email" class="form-control" placeholder=""></label>
+          <label for="telefono">Telefono de contacto <input type="text" name="telefono" id="telefono" class="form-control" placeholder=""></label>
+          <label for="photo">Sube una foto de perfil</label>
+          <input type="file" name="photo" accept="image/*" id="photo">
+          <input type="submit" class="btn btn-primary mt-3" id="btn" value="Guardar">
+        </div>
+      </div>
     </div>
   </div>
   <footer class="text-muted bg-light">
