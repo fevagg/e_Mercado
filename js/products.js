@@ -1,30 +1,26 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-
 let products = [];
 
 let showProducts = (array)=>{
-    let productList = "";
+    let productList = `<a href="product-info.html" style="text-decoration:none; color:black;">
+    <div class="card-group">
+    <div class="row" style="width:100%">`;
     for(let product of array){
-        productList += `<a href="product-info.html" style="text-decoration:none; color:black;">
-        <div class="list-group-item">
-        <div class="row">
-            <div class="col-sm-4">
-        <img src="${product.imgSrc}" alt="${product.description}" class="img-thumbnail">
-    </div>
-    <div class="col-sm-8">
-        <div class="d-flex w-100 justify-content-between">
-            <h4>${product.name}</h4>
-            <p>${product.soldCount} artículos</p>
-        </div>
-        <p>${product.description}</p>
-        <span>${product.currency} ${product.cost}</span>
-    </div>
-</div>
-</div>
-</a>`
+        productList += `
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card m-2 w-100">
+                <img src="${product.imgSrc}" alt="${product.description}" class="card-img-top">
+                <div class="card-body d-inline-flex flex-column justify-content-between">
+                    <h4>${product.name}</h4>
+                    <p>${product.soldCount} artículos</p>
+                    <p>${product.description}</p>
+                    <span>${product.currency} ${product.cost}</span>
+                </div>
+                </div>
+            </div>`
     }
+    productList += `</div>
+    </div>
+    </a>`;
     document.getElementById('product-list').innerHTML = productList;
 }
 
