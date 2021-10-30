@@ -27,11 +27,12 @@
       </div>
     </nav>
       <div class="container py-4">
+        <h2 class="text-center p-4">Productos</h2>
         <div class="row justify-content-around align-self-center p-2" style="background-color: bisque; border-radius: 10px;">
-        <button class="btn btn-white btn-sm" onclick="orderProductByLowestPrice()"><i class="fas fa-sort-amount-down-alt"></i>USD</button>
-        <button class="btn btn-white btn-sm" onclick="orderProductByHighestPrice()"><i class="fas fa-sort-amount-up-alt"></i>USD</button><button class="btn btn-white btn-sm" onclick="orderProductByRelevance()"><i class="fas fa-sort-amount-down"></i></button>
-        <input type="search" style="width: 20vw;" onkeyup="search()" id="search" placeholder="Buscá tu producto" name="search" class="form-control form-control-sm">
-        <input type="number" onkeyup="filteredByPrice()" id="min" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 5rem;"><input type="number" onkeyup="filteredByPrice()" id="max" min="0" placeholder="" name="number" class="form-control form-control-sm" style="width: 5rem;"
+          <button class="btn btn-white btn-sm" onclick="orderProductByLowestPrice()"><i class="fas fa-sort-amount-down-alt"></i>USD</button>
+          <button class="btn btn-white btn-sm" onclick="orderProductByHighestPrice()"><i class="fas fa-sort-amount-up-alt"></i>USD</button><button class="btn btn-white btn-sm" onclick="orderProductByRelevance()"><i class="fas fa-sort-amount-down"></i></button>
+          <input type="search" style="width: 20vw;" onkeyup="search()" id="search" placeholder="Buscá tu producto" name="search" class="form-control form-control-sm">
+          <input type="number" onkeyup="filteredByPrice()" id="min" min="0" placeholder="Min." name="number" class="form-control form-control-sm" style="width: 5rem;"><input type="number" onkeyup="filteredByPrice()" id="max" min="0" placeholder="Max." name="number" class="form-control form-control-sm" style="width: 5rem;">
         </div>
       </div>
       <div id="product-list" class="container my-4"></div>

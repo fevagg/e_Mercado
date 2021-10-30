@@ -1,26 +1,26 @@
 let products = [];
 
 let showProducts = (array)=>{
-    let productList = `<a href="product-info.html" style="text-decoration:none; color:black;">
-    <div class="card-group">
-    <div class="row" style="width:100%">`;
+    let productList = `<div class="row" style="width:100%">
+    <div class="card-group">`;
     for(let product of array){
         productList += `
-            <div class="col-md-4 d-flex justify-content-center">
-                <div class="card m-2 w-100">
+            <div class="col-md-3">
+            <a href="product-info.html" style="text-decoration:none; color:black;">
+                <div class="card w-100 h-100">
                 <img src="${product.imgSrc}" alt="${product.description}" class="card-img-top">
-                <div class="card-body d-inline-flex flex-column justify-content-between">
+                <div class="card-body d-flex flex-column justify-content-between">
                     <h4>${product.name}</h4>
                     <p>${product.soldCount} artículos</p>
                     <p>${product.description}</p>
                     <span>${product.currency} ${product.cost}</span>
                 </div>
                 </div>
+            </a>
             </div>`
     }
     productList += `</div>
-    </div>
-    </a>`;
+    </div>`;
     document.getElementById('product-list').innerHTML = productList;
 }
 

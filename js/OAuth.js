@@ -4,6 +4,10 @@ function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     user.nombre = profile.getName();
     user.estado = 'conectado';
+    user.photo = profile.getImageUrl();
+    user.email = profile.getEmail();
+    user.firstName = profile.getGivenName();
+    user.lastName = profile.getFamilyName();
     location.href = 'principal.html'
     if(checkbox[0].checked){
         localStorage.setItem('usuario', JSON.stringify(user));
@@ -18,10 +22,12 @@ function onLoad() {
 }
 function signOut(){
     var auth2 = gapi.auth2.getAuthInstance();
-    location.href = 'index.html';
     auth2.signOut().then(function () {
-        localStorage.clear();
-        sessionStorage.clear();
-        console.log('done');
+        if(localStorage.getItem('usuario')){
+            localStorage.clear();
+        }else{
+            sessionStorage.clear();
+        }
     });
+    location.href = 'index.html';
 }

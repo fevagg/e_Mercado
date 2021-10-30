@@ -1,17 +1,17 @@
 let usuario = JSON.parse(localStorage.getItem('usuario')) != null ? JSON.parse(localStorage.getItem('usuario')) : JSON.parse(sessionStorage.getItem('usuario'));
 
-function setPhoto(user) {
-    let file = document.querySelector('input[type=file]').files[0];
+function setPhoto(user){
+    let input = document.querySelector('input[type=file]');
     let reader = new FileReader();
+
+    if (input.files[0]) {
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        user.photo = "./img/user-icon.png";
+    }
 
     reader.onloadend = () =>{
         user.photo = reader.result;
-    }
-
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        user.photo = "./img/user-icon.png";
     }
 }
 
@@ -20,7 +20,6 @@ function setProfileData(){
         setProfileView(usuario);
     }
     document.getElementById("btn").addEventListener('click', (e)=>{
-        e.preventDefault();
         usuario.firstName = document.getElementById("nombre").value;
         usuario.lastName = document.getElementById("apellido").value;
         usuario.age = document.getElementById("edad").value;
@@ -29,10 +28,11 @@ function setProfileData(){
         setPhoto(usuario);
         if(localStorage.getItem('usuario') !== null){
             localStorage.setItem('usuario', JSON.stringify(usuario));
+            setProfileView(usuario);
         }else{
             sessionStorage.setItem('usuario', JSON.stringify(usuario));
+            setProfileView(usuario);
         }
-        setProfileView(usuario);
      });
 }
 

@@ -48,11 +48,11 @@ document.addEventListener("DOMContentLoaded", function(e){
     var user = JSON.parse(localStorage.getItem('usuario'))
     const navDrop = `<div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-    <i class="fa fa-user-circle" aria-hidden="true"></i> ${user.nombre}</button>
+    <img src="${user.photo || "./img/user-icon.png"}" id="profilePhoto" alt="" style="border-radius: 100%; width: 25px; height:25px; object-fit:cover;"> ${user.nombre}</button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
       <a class="dropdown-item" href="./cart.html">Mi carrito</a>
-      <a class="dropdown-item" href="./my-profile.html"><img src="${user.photo || "./img/user-icon.png"}" id="profilePhoto" alt="" style="border-radius: 100%; width: 25px; height:25px; object-fit:cover;"> Mi perfil</a>
-      <a class="dropdown-item" id="disconnect" href="">Desconectar</a>
+      <a class="dropdown-item" href="./my-profile.html">Mi perfil</a>
+      <a class="dropdown-item" id="disconnect" href="./index.html">Desconectar</a>
     </div>
     </div>`
     document.getElementsByTagName('nav')[0].firstElementChild.innerHTML += navDrop;
