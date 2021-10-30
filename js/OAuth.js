@@ -23,11 +23,8 @@ function onLoad() {
 function signOut(){
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-        if(localStorage.getItem('usuario')){
-            localStorage.clear();
-        }else{
-            sessionStorage.clear();
-        }
+        localStorage.clear();
+        sessionStorage.clear();
     });
     location.href = 'index.html';
 }

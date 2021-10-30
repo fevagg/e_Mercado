@@ -5,7 +5,7 @@ let showProducts = (array)=>{
     <div class="card-group">`;
     for(let product of array){
         productList += `
-            <div class="col-md-3">
+            <div class="col-md-4 my-2">
             <a href="product-info.html" style="text-decoration:none; color:black;">
                 <div class="card w-100 h-100">
                 <img src="${product.imgSrc}" alt="${product.description}" class="card-img-top">

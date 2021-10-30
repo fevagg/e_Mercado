@@ -1,4 +1,4 @@
-let usuario = JSON.parse(localStorage.getItem('usuario')) != null ? JSON.parse(localStorage.getItem('usuario')) : JSON.parse(sessionStorage.getItem('usuario'));
+const usuario = JSON.parse(localStorage.getItem('usuario')) != null ? JSON.parse(localStorage.getItem('usuario')) : JSON.parse(sessionStorage.getItem('usuario'));
 
 function setPhoto(user){
     let input = document.querySelector('input[type=file]');
@@ -26,13 +26,8 @@ function setProfileData(){
         usuario.email = document.getElementById("email").value;
         usuario.phone = document.getElementById("telefono").value;
         setPhoto(usuario);
-        if(localStorage.getItem('usuario') !== null){
-            localStorage.setItem('usuario', JSON.stringify(usuario));
-            setProfileView(usuario);
-        }else{
-            sessionStorage.setItem('usuario', JSON.stringify(usuario));
-            setProfileView(usuario);
-        }
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+        setProfileView(usuario);
      });
 }
 
