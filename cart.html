@@ -11,7 +11,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.css">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -74,18 +74,9 @@
     <div class="wrapper">
       <div class="form-check d-flex flex-column p-5" style="background-color: antiquewhite; border-radius: 15px;">
         <h6><b>Tipo de envío</b></h6>
-        <div>
-          <input type="radio" id="premium" name="shippingRadio" value="premium">
-          <label for="premium">Premium (2-5 días) <small><i>(+15% del precio total.)</i></small></label>
-        </div>
-        <div>
-          <input type="radio" id="express" name="shippingRadio" value="express">
-          <label for="express">Express (5-8 días) <small><i>(+7% del precio total.)</i></small></label>
-        </div>
-        <div>
-          <input type="radio" id="standard" name="shippingRadio" value="standard">
-          <label for="standard">Standard (12 a 15 días) <small><i>(+5% del precio total.)</i></small></label>
-        </div>
+        <label for="premium"><input type="radio" id="premium" name="shippingRadio" value="premium"> Premium (2-5 días) <small><i>(+15% del precio total.)</i></small></label>
+        <label for="express"><input type="radio" id="express" name="shippingRadio" value="express"> Express (5-8 días) <small><i>(+7% del precio total.)</i></small></label>
+        <label for="standard"><input type="radio" id="standard" name="shippingRadio" value="standard"> Standard (12 a 15 días) <small><i>(+5% del precio total.)</i></small></label>
       </div>
     </div>
       <div class="form-group d-flex justify-content-around p-5">
@@ -105,16 +96,11 @@
       </div>
     <div class="wrapper pb-5 d-flex flex-column">
       <h6 class="py-3"><b>Formas de pago</b></h6>
-      <div class="form-group align-self-start text-left w-25">
-        <select class="form-control" name="" id="pay-method-setter">
-          <option>Selecciona tu forma de pago</option>
-          <option>Transferencia Bancaria</option>
-          <option>Tarjeta de crédito</option>
-        </select>
-      </div>
-      <div id="pay-method"></div>
+      <button type="button" class="btn btn-success w-25" data-toggle="modal" data-target="#payMethodModal">
+        Elige una
+      </button>
     </div>
-    <button class="btn btn-secondary w-25 align-self-center">Finalizar compra</button>
+    <button class="btn btn-success w-25 align-self-center">Finalizar compra</button>
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -124,11 +110,40 @@
       <div></div>
     </div>
   </div>
+
+  <div class="modal fade" id="payMethodModal" tabindex="-1" role="dialog" aria-labelledby="payMethodId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Metodo de pago</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Selecciona un metodo de pago</label>
+            <select class="form-control" name="payMethod" id="payMethod">
+              <option>Selecciona un metodo de pago</option>
+              <option>Cuenta bancaria</option>
+              <option>Tarjeta de credito</option>
+            </select>
+          </div>
+          <div class="modal-form">
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.js"></script>
 </body>
-
 </html>
