@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
   <title>eMercado - Todo lo que busques está aquí</title>
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.css">
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.css" />
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -28,9 +28,9 @@
       }
     }
   </style>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/dropzone.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -42,7 +42,7 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
     </div>
   </nav>
-  <div class="container d-flex flex-column" style="height: 100vh;">
+  <div class="container d-flex flex-column" style="height: 100vh">
     <table class="table">
       <thead>
         <tr>
@@ -53,54 +53,72 @@
           <th>Subtotal</th>
         </tr>
       </thead>
-      <tbody>
-      </tbody>
+      <tbody></tbody>
     </table>
-    <div class="d-inline-flex justify-content-between mx-2">
-      <div id="total" class="py-5 d-flex flex-column">
-        <h5 class="d-inline-flex"><b>Total: </b><div id="totalAll"></div></h5>
-        <div id="totalProduct"></div>
-        <div id="totalShipping"></div>
-      </div>
+    <form action="" class="was-validated d-flex flex-column">
+      <div class="d-inline-flex justify-content-between mx-2">
+        <div id="total" class="py-5 d-flex flex-column">
+          <h5 class="d-inline-flex">
+            <b>Total: </b>
+            <div id="totalAll"></div>
+          </h5>
+          <div id="totalProduct"></div>
+          <div id="totalShipping"></div>
+        </div>
       <div class="form-group py-5 align-self-end text-right">
         <label for="">Divisa</label>
-        <select class="form-control" name="" id="setCurrency">
-          <option>Selecciona una divisa</option>
+        <select class="form-control" name="" id="setCurrency" required>
+          <option value="">Selecciona una divisa</option>
           <option>USD</option>
           <option>UYU</option>
         </select>
+        <div class="invalid-feedback">Seleccione una divisa.</div>
+        <div class="valid-feedback">Válido.</div>
       </div>
-    </div>
-    <div class="wrapper">
-      <div class="form-check d-flex flex-column p-5" style="background-color: antiquewhite; border-radius: 15px;">
+      </div>
+      <div class="form-check d-flex flex-column p-5" style="background-color: antiquewhite; border-radius: 15px">
         <h6><b>Tipo de envío</b></h6>
-        <label for="premium"><input type="radio" id="premium" name="shippingRadio" value="premium"> Premium (2-5 días) <small><i>(+15% del precio total.)</i></small></label>
-        <label for="express"><input type="radio" id="express" name="shippingRadio" value="express"> Express (5-8 días) <small><i>(+7% del precio total.)</i></small></label>
-        <label for="standard"><input type="radio" id="standard" name="shippingRadio" value="standard"> Standard (12 a 15 días) <small><i>(+5% del precio total.)</i></small></label>
+        <label for="premium"><input type="radio" id="premium" name="shippingRadio" value="0.15" required />
+          Premium (2-5 días)
+        <small><i>(+15% del precio total.)</i></small></label>
+        <label for="express"><input type="radio" id="express" name="shippingRadio" value="0.07" required />
+          Express (5-8 días)
+          <small><i>(+7% del precio total.)</i></small></label>
+        <label for="standard"><input type="radio" id="standard" name="shippingRadio" value="0.05" required />
+          Standard (12 a 15 días)
+          <small><i>(+5% del precio total.)</i></small></label>
       </div>
-    </div>
-      <div class="form-group d-flex justify-content-around p-5">
-        <label for="">Dirección:
-        <input type="text" name="" id="" class="form-control" placeholder="Dirección de envío"></label>
-        <label for="">Esquina:
-        <input type="text" name="" id="" class="form-control" placeholder="Esquina"></label>
+      <div class="form-group d-flex flex-column justify-content-around p-5">
+        <label for="address">Dirección:</label>
+          <input type="text" name="address" id="address" class="form-control w-75" placeholder="Dirección de envío" required />
+          <div class="invalid-feedback">Seleccione una dirección.</div>
+          <div class="valid-feedback">Válido.</div>
+        <label for="esquina">Esquina:</label>
+          <input type="text" name="esquina" id="esquina" class="form-control w-75" placeholder="Esquina" required />
+          <div class="invalid-feedback">Seleccione una esquina.</div>
+          <div class="valid-feedback">Válido.</div>
         <div class="form-group">
-          <label for="">País:</label>
-          <select class="form-control" name="" id="">
-            <option>Selecciona un país</option>
+          <label for="country">País:</label>
+          <select class="form-control w-50" name="country" id="country" required>
+            <option value="">Selecciona un país</option>
             <option>Uruguay</option>
             <option>Argentina</option>
             <option>Brasil</option>
           </select>
+          <div class="invalid-feedback">Seleccione un país de destino.</div>
+          <div class="valid-feedback">Válido.</div>
         </div>
       </div>
-    <div class="wrapper pb-5 d-flex flex-column">
-      <h6 class="py-3"><b>Formas de pago</b></h6>
-      <button type="button" class="btn btn-success w-25" data-toggle="modal" data-target="#payMethodModal">
-        Elige una
+      <div class="wrapper pb-5 d-flex flex-column">
+        <h6 class="py-3"><b>Formas de pago</b></h6>
+        <button type="button" class="btn btn-success w-25" data-toggle="modal" data-target="#payMethodModal">
+          Elige una
+        </button>
+      </div>
+      <button type="submit" class="btn btn-success w-25 align-self-center">
+        Finalizar compra
       </button>
-    </div>
-    <button class="btn btn-success w-25 align-self-center">Finalizar compra</button>
+    </form>
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -110,15 +128,15 @@
       <div></div>
     </div>
   </div>
-
-  <div class="modal fade" id="payMethodModal" tabindex="-1" role="dialog" aria-labelledby="payMethodId" aria-hidden="true">
+  <div class="modal fade" id="payMethodModal" tabindex="-1" role="dialog" aria-labelledby="payMethodId"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Metodo de pago</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
           <div class="form-group">
@@ -129,12 +147,7 @@
               <option>Tarjeta de credito</option>
             </select>
           </div>
-          <div class="modal-form">
-            
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <div class="modal-form"></div>
         </div>
       </div>
     </div>
@@ -146,4 +159,5 @@
   <script src="js/cart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.js"></script>
 </body>
+
 </html>

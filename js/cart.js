@@ -4,9 +4,7 @@ const amount = document.getElementsByClassName("amount-item");
 function amountHandle() {
   for (let item of amount) {
     item.addEventListener("change", (event) => {
-      if (
-        document.getElementById("setCurrency").value !== "Selecciona una divisa"
-      ) {
+      if (document.getElementById("setCurrency").value !== "") {
         event.target.parentElement.parentElement.children[4].children[1].innerHTML =
           event.target.parentElement.parentElement.children[2].children[1]
             .innerHTML * event.target.value;
@@ -64,54 +62,43 @@ function setCurrency(objCart) {
           }
           productTotal("UYU");
           break;
-        default:
-          document.getElementById("totalProduct").innerHTML = "";
       }
     });
   }
 }
 
 function shipping(currency) {
+  let shippingCost = 0;
+  const shippingView = document.getElementById("totalShipping");
   const shipping = document.getElementsByName("shippingRadio");
   const subTotal = parseFloat(document.getElementById("totalNumber").innerHTML);
-  let totalShipping = document.getElementById("totalShipping");
-  shipping.forEach((elem) =>
-    elem.addEventListener("click", (event) => {
-      switch (event.target.value) {
-        case "premium":
-          totalShipping.innerHTML = `<span class="currency">Total de envio: ${currency}<span id="totalShippingNumber"> ${
-            (subTotal * 15) / 100
-          }</span></span>`;
-
-          total(currency);
-          break;
-        case "express":
-          totalShipping.innerHTML = `<span class="currency">Total de envio: ${currency}<span id="totalShippingNumber"> ${
-            (subTotal * 7) / 100
-          }</span></span>`;
-
-          total(currency);
-          break;
-        case "standard":
-          totalShipping.innerHTML = `<span class="currency">Total de envio: ${currency}<span id="totalShippingNumber"> ${
-            (subTotal * 5) / 100
-          }</span></span>`;
-          total(currency);
-          break;
-      }
-    })
-  );
+  shipping.forEach((elem) =>{
+    if(elem.checked){
+      shippingCost = parseFloat(elem.value) * subTotal;
+    }
+  });
+  shippingView.innerHTML = `<span class="currency">Total de envío: ${currency}<span id="totalNumber"> ${(shippingCost).toFixed(2)}</span></span>`
+  return shippingCost;
 }
 
+function handlerShipping(currency){
+  const shippingHTML = document.getElementsByName("shippingRadio");
+  shippingHTML.forEach(elem=>{
+    elem.addEventListener("change", ()=>{
+      shipping(currency);
+      total(currency);
+    });
+  })
+
+}
+
+//Total de producto + envío
 function total(currency) {
   let totalValue = document.getElementById("totalAll");
-  let totalShipping = parseFloat(
-    document.getElementById("totalShippingNumber").innerHTML
-  );
   let totalProduct = parseFloat(
     document.getElementById("totalNumber").innerHTML
   );
-  totalValue.innerHTML = `${currency} ${totalShipping + totalProduct}`;
+  totalValue.innerHTML = `${currency} ${shipping(currency) + totalProduct}`;
 }
 
 //Muestra total del producto
@@ -120,7 +107,8 @@ function productTotal(currency) {
   const totalReduce = subtotal.reduce((a, b) => a + parseFloat(b.innerHTML), 0);
   let html = `<span class="currency">Total de producto: ${currency}<span id="totalNumber"> ${totalReduce}</span></span>`;
   document.getElementById("totalProduct").innerHTML = html;
-  shipping(currency);
+  deleteFromCart(currency);
+  handlerShipping(currency);
   total(currency);
 }
 
@@ -143,24 +131,44 @@ function productCartView(objCart) {
         <td><span class="currency">${
           obj.currency
         } </span><span class="subtotal">${obj.unitCost * obj.count}</span></td>
+        <td><button class="btn btn-danger dismiss" onclick="event.target.parentElement.parentElement.remove()">Eliminar</button></td>
         </tr>`;
   }
   document.getElementsByTagName("tbody")[0].innerHTML = html;
 }
 
+function deleteFromCart(currency) {
+  const btnArray = document.getElementsByClassName("dismiss");
+  for (let btn of btnArray) {
+    btn.addEventListener("click", (event) => {
+      event.target.parentElement.parentElement.remove();
+      productTotal(currency);
+      total(currency);
+    });
+  }
+}
+
+function validatePayMethod() {
+  document.getElementById("saveMethod").addEventListener("click", () => {
+    const inputForm = document.querySelector("#credit-form");
+    const inputArray = Array.from(inputForm.querySelectorAll("input"));
+    if (inputArray.every((elem) => elem.value.trim() != "")) {
+      document.getElementById("saveMethod").dataset.dismiss = "modal";
+    } else {
+      document.getElementById("saveMethod").dataset.dismiss = "";
+    }
+  });
+}
+
+//Método de pago
 function payMethod() {
-  let modal = document.getElementById("payMethodModal");
   let selectPayMethod = document.getElementById("payMethod");
   let modalForm = document.getElementsByClassName("modal-form");
-  const savePayMethod = document.getElementById('savePayMethod');
   selectPayMethod.addEventListener("change", () => {
     if (selectPayMethod.value === "Selecciona un metodo de pago") {
       modalForm[0].innerHTML = "";
     } else if (selectPayMethod.value === "Tarjeta de credito") {
-      function prevent(event){
-          event.preventDefault()
-        }
-      modalForm[0].innerHTML = `<form class="needs-validation">
+      modalForm[0].innerHTML = `<form id="credit-form" class="was-validated">
       <label for="number">Numero de tarjeta</label>
       <input class="form-control" type="text" name="number" required>
       <div class="valid-feedback">
@@ -189,24 +197,29 @@ function payMethod() {
       Por favor, ingrese el codigo verificador.
       </div></label>
       </div>
-      <button type="submit" class="btn btn-success"> Guardar </button>
+      <button class="btn btn-success my-4" id="saveMethod">Guardar</button>
       </form>`;
       let card = new Card({
-        form: "form",
+        form: "#credit-form",
         container: ".modal-form",
         formSelectors: {
           nameInput: 'input[name="first-name"], input[name="last-name"]',
         },
       });
+      validatePayMethod();
     } else {
-      modalForm[0].innerHTML = `<form>
+      modalForm[0].innerHTML = `<form id="credit-form" class="was-validated">
       <label for="number">Numero de cuenta</label>
-      <input class="form-control" type="text" name="number" pattern="/^(?:[0-9]{11}|[0-9]{2}-[0-9]{3}-[0-9]{6})$/">
+      <input class="form-control" type="text" name="number" pattern="[a-zA-Z]{2}[0-9]{20}$" required />
+      <div class="invalid-feedback">
+      Por favor, ingrese los caracteres representantes de su entidad y su número de cuenta.
+      </div>
+      <button class="btn btn-success my-4" id="saveMethod">Guardar</button>
       </form>`;
+      validatePayMethod();
     }
   });
 }
-
 
 //Fetch y llamados a funciones
 document.addEventListener("DOMContentLoaded", function () {
