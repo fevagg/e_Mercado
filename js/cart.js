@@ -168,7 +168,7 @@ function payMethod() {
     if (selectPayMethod.value === "Selecciona un metodo de pago") {
       modalForm[0].innerHTML = "";
     } else if (selectPayMethod.value === "Tarjeta de credito") {
-      modalForm[0].innerHTML = `<form id="credit-form" class="was-validated">
+      modalForm[0].innerHTML = `<div id="credit-form" class="was-validated form-group">
       <label for="number">Numero de tarjeta</label>
       <input class="form-control" type="text" name="number" required>
       <div class="valid-feedback">
@@ -198,7 +198,7 @@ function payMethod() {
       </div></label>
       </div>
       <button class="btn btn-success my-4" id="saveMethod">Guardar</button>
-      </form>`;
+      </div>`;
       let card = new Card({
         form: "#credit-form",
         container: ".modal-form",
@@ -208,14 +208,14 @@ function payMethod() {
       });
       validatePayMethod();
     } else {
-      modalForm[0].innerHTML = `<form id="credit-form" class="was-validated">
+      modalForm[0].innerHTML = `<div id="credit-form" class="was-validated form-group">
       <label for="number">Numero de cuenta</label>
       <input class="form-control" type="text" name="number" pattern="[a-zA-Z]{2}[0-9]{20}$" required />
       <div class="invalid-feedback">
       Por favor, ingrese los caracteres representantes de su entidad y su número de cuenta.
       </div>
       <button class="btn btn-success my-4" id="saveMethod">Guardar</button>
-      </form>`;
+      </div>`;
       validatePayMethod();
     }
   });

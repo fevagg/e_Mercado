@@ -43,6 +43,7 @@
     </div>
   </nav>
   <div class="container d-flex flex-column" style="height: 100vh">
+    <form action="http://localhost:4500/purchase" method="POST" class="was-validated d-flex flex-column">
     <table class="table">
       <thead>
         <tr>
@@ -55,7 +56,6 @@
       </thead>
       <tbody></tbody>
     </table>
-    <form action="" class="was-validated d-flex flex-column">
       <div class="d-inline-flex justify-content-between mx-2">
         <div id="total" class="py-5 d-flex flex-column">
           <h5 class="d-inline-flex">
@@ -66,8 +66,8 @@
           <div id="totalShipping"></div>
         </div>
       <div class="form-group py-5 align-self-end text-right">
-        <label for="">Divisa</label>
-        <select class="form-control" name="" id="setCurrency" required>
+        <label for="divisa">Divisa</label>
+        <select class="form-control" name="divisa" id="setCurrency" required>
           <option value="">Selecciona una divisa</option>
           <option>USD</option>
           <option>UYU</option>
@@ -118,6 +118,30 @@
       <button type="submit" class="btn btn-success w-25 align-self-center">
         Finalizar compra
       </button>
+      <div class="modal fade" id="payMethodModal" tabindex="-1" role="dialog" aria-labelledby="payMethodId"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Metodo de pago</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="payMethod">Selecciona un metodo de pago</label>
+              <select class="form-control" name="payMethod" id="payMethod">
+                <option>Selecciona un metodo de pago</option>
+                <option>Cuenta bancaria</option>
+                <option>Tarjeta de credito</option>
+              </select>
+            </div>
+            <div class="modal-form"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     </form>
   </div>
   <div id="spinner-wrapper">
@@ -126,30 +150,6 @@
       <div></div>
       <div></div>
       <div></div>
-    </div>
-  </div>
-  <div class="modal fade" id="payMethodModal" tabindex="-1" role="dialog" aria-labelledby="payMethodId"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Metodo de pago</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="">Selecciona un metodo de pago</label>
-            <select class="form-control" name="payMethod" id="payMethod">
-              <option>Selecciona un metodo de pago</option>
-              <option>Cuenta bancaria</option>
-              <option>Tarjeta de credito</option>
-            </select>
-          </div>
-          <div class="modal-form"></div>
-        </div>
-      </div>
     </div>
   </div>
   <script src="js/jquery-3.4.1.min.js"></script>
